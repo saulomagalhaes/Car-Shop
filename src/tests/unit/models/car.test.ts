@@ -7,12 +7,12 @@ const { expect } = chai;
 
 describe("Car Model", () => {
   const carModel = new Car();
-  beforeEach(async () => {
+  before(async () => {
     sinon.stub(Model, "create").resolves(carMockWithId);
     sinon.stub(Model, "find").resolves([carMockWithId]);
   });
 
-  afterEach(() => {
+  after(() => {
     sinon.restore();
   });
 
@@ -25,8 +25,24 @@ describe("Car Model", () => {
 
   describe("Read", () => { 
     it("Sucess", async () => { 
-      const newCar = await carModel.read();
-			expect(newCar).to.be.deep.equal([carMockWithId]);
+      const cars = await carModel.read();
+			expect(cars).to.be.deep.equal([carMockWithId]);
+    });
+  });
+
+  describe("ReadOne", () => { 
+    it("Sucess", async () => { 
+      sinon.stub(Model, "findOne").resolves(carMockWithId);
+      const car = await carModel.readOne('62cf1fc6498565d94eba52cd');
+			expect(car).to.be.deep.equal(carMockWithId);
+    });
+
+    it("Failure", async () => { 
+      try {
+				await carModel.readOne('123ERRADO');
+			} catch (error: any) {
+				expect(error.message).to.be.eq('InvalidMongoId');
+			}
     });
   });
 });

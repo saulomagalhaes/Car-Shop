@@ -19,6 +19,12 @@ describe("Car Service", () => {
       .resolves(carMockWithId)
       .onCall(1)
       .resolves(null);
+    sinon
+      .stub(carModel, "update")
+      .onCall(0)
+      .resolves(carMockWithId)
+      .onCall(1)
+      .resolves(null);
   });
   after(() => {
     sinon.restore();
@@ -64,5 +70,36 @@ describe("Car Service", () => {
       }
       expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
     });
+  });
+
+  describe("Update", () => {
+    it("Success", async () => {
+      const carCreated = await carService.update(
+        "62cf1fc6498565d94eba52cd",
+        carMock
+      );
+      expect(carCreated).to.be.deep.equal(carMockWithId);
+    });
+
+    it("Failure - Zod Fails", async () => {
+      let error;
+      try {
+        await carService.update("62cf1fc6498565d94eba52cd", {});
+      } catch (err) {
+        error = err;
+      }
+      expect(error).to.be.instanceOf(ZodError);
+    });
+
+
+		it('Failure - Not Found', async () => {
+			let err: any;
+			try {
+				await carService.update('any-id', carMock);
+			} catch(error) {
+				err = error;
+			}
+			expect(err.message).to.be.eq(ErrorTypes.EntityNotFound);
+		})
   });
 });

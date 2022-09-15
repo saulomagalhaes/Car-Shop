@@ -18,6 +18,7 @@ describe('Car Controller', () => {
     sinon.stub(carService, 'create').resolves(carMockWithId);
     sinon.stub(carService, 'read').resolves([carMockWithId]);
     sinon.stub(carService, 'readOne').resolves(carMockWithId);
+    sinon.stub(carService, 'update').resolves(carMockWithId);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -48,6 +49,16 @@ describe('Car Controller', () => {
     it('Sucess', async () => {
       req.params = { id: '62cf1fc6498565d94eba52cd' };
       await carController.readOne(req, res);
+      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(carMockWithId)).to.be.true;
+    });
+  });
+
+  describe('Update', () => {
+    it('Sucess', async () => {
+      req.body = carMock;
+      req.params = { id: '62cf1fc6498565d94eba52cd' };
+      await carController.update(req, res);
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
       expect((res.json as sinon.SinonStub).calledWith(carMockWithId)).to.be.true;
     });

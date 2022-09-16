@@ -22,6 +22,7 @@ describe('Car Controller', () => {
     sinon.stub(carService, 'delete').resolves(carMockWithId);
 
     res.status = sinon.stub().returns(res);
+    res.sendStatus = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
   });
 
@@ -69,7 +70,7 @@ describe('Car Controller', () => {
     it('Sucess', async () => {
       req.params = { id: '62cf1fc6498565d94eba52cd' };
       await carController.delete(req, res);
-      expect((res.status as sinon.SinonStub).calledWith(204)).to.be.true;
+      expect((res.sendStatus as sinon.SinonStub).calledWith(204)).to.be.true;
     });
   });
 });

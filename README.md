@@ -1,7 +1,7 @@
 
 # Car Shop
 
-API RESTful construída para gerenciar uma concessionária de veículos utilizando Node, Express, Typescript, Mongoose, MongoDB e POO.
+API RESTful construída para gerenciar uma concessionária de veículos utilizando Node, Express, Typescript, Mongoose, MongoDB, POO e SOLID.
 
 ## Autor
 
@@ -11,6 +11,10 @@ API RESTful construída para gerenciar uma concessionária de veículos utilizan
 
 Construção de uma API RESTful aplicando o padrão de arquitetura de software MSC
 (Model-Service-Controller), utilização do Mongoose.
+
+## Stack utilizada
+
+**Back-end:** Node, Express, Typescript, Mongoose, MongoDB, POO e SOLID.
 
 ## Documentação Completa da API
 Ao subir a aplicação acesse a documentação através da seguinte rota:

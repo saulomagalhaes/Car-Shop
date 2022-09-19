@@ -1,0 +1,122 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Car-Shop API",
+    "version": "1.0",
+    "description": "This is a simple API for a car shop"
+  },
+  "servers": [{ "url": "http://localhost:3001/" }],
+  "paths": {
+    "/cars": {
+      "get": {
+        "tags": ["Cars"],
+        "summary": "Get all cars",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Car"
+                  }
+                },
+                "examples": {
+                  "allCars": { "$ref": "#/components/examples/Cars" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new car",
+        "tags": ["Cars"],
+        "summary": "Create a new car",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Car"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Car": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "example": "BMW"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32",
+            "example": 2019
+          },
+          "color": {
+            "type": "string",
+            "example": "red"
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "buyValue": {
+            "type": "integer",
+            "format": "int32",
+            "example": 10000
+            
+          },
+          "doorsQty": {
+            "type": "integer",
+            "format": "int32",
+            "example": 4
+          },
+          "seatsQty": {
+            "type": "integer",
+            "format": "int32",
+            "example": 5
+          }
+        }
+      }
+    },
+    "examples": {
+      "Cars": {
+        "value": [
+          {
+            "_id": "632884752800190ec6dd325a",
+            "model": "Ferrari Maranello",
+            "year": 1963,
+            "color": "red",
+            "status": true,
+            "buyValue": 3500000,
+            "doorsQty": 2,
+            "seatsQty": 2
+          },
+          {
+            "_id": "632884752800190ec6dd325b",
+            "model": "Ferrari 458 Italia",
+            "year": 2010,
+            "color": "red",
+            "status": true,
+            "buyValue": 2500000,
+            "doorsQty": 2,
+            "seatsQty": 2
+          }
+        ]
+      }
+    }
+  }
+}

@@ -46,11 +46,246 @@
         },
         "responses": {
           "201": {
-            "description": "OK"
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/cars/{id}": {
+      "get": {
+        "description": "Get a car by id",
+        "tags": ["Cars"],
+        "summary": "Get a car by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                },
+                "examples": {
+                  "car": { "$ref": "#/components/examples/Car" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Update a car by id",
+        "tags": ["Cars"],
+        "summary": "Update a car by id",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Car"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                },
+                "examples": {
+                  "car": { "$ref": "#/components/examples/Car" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a car by id",
+        "tags": ["Cars"],
+        "summary": "Delete a car by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/motorcycles": {
+      "get": {
+        "tags": ["Motorcycles"],
+        "summary": "Get all motorcycles",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Motorcycle"
+                  }
+                },
+                "examples": {
+                  "allMotorcycles": { "$ref": "#/components/examples/Motorcycles" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new motorcycle",
+        "tags": ["Motorcycles"],
+        "summary": "Create a new motorcycle",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Motorcycle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/motorcycles/{id}": {
+      "get": {
+        "description": "Get a motorcycle by id",
+        "tags": ["Motorcycles"],
+        "summary": "Get a motorcycle by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Motorcycle"
+                },
+                "examples": {
+                  "car": { "$ref": "#/components/examples/Motorcycle"}
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Update a motorcycle by id",
+        "tags": ["Motorcycles"],
+        "summary": "Update a motorcycle by id",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Motorcycle"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Motorcycle"
+                },
+                "examples": {
+                  "car": { "$ref": "#/components/examples/Motorcycle" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a motorcycle by id",
+        "tags": ["Motorcycles"],
+        "summary": "Delete a motorcycle by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
           }
         }
       }
     }
+    
   },
   "components": {
     "schemas": {
@@ -90,6 +325,42 @@
             "example": 5
           }
         }
+      },
+      "Motorcycle":{
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "example": "Kawasaki Ninja"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32",
+            "example": 2019
+          },
+          "color": {
+            "type": "string",
+            "example": "red"
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "buyValue": {
+            "type": "integer",
+            "format": "int32",
+            "example": 10000
+            
+          },
+          "category": {
+            "type": "string",
+            "example": "Street"
+          },
+          "engineCapacity": {
+            "type": "integer",
+            "format": "int32",
+            "example": 1000
+          }
+        }
       }
     },
     "examples": {
@@ -116,6 +387,54 @@
             "seatsQty": 2
           }
         ]
+      },
+      "Car": {
+        "value": {
+          "_id": "632884752800190ec6dd325a",
+          "model": "Ferrari Maranello",
+          "year": 1963,
+          "color": "red",
+          "status": true,
+          "buyValue": 3500000,
+          "doorsQty": 2,
+          "seatsQty": 2
+        }
+      },
+      "Motorcycles":{
+        "value": [
+          {
+            "_id": "632884752800190ec6dd325a",
+            "model": "CG 150",
+            "year": 1963,
+            "color": "red",
+            "status": true,
+            "buyValue": 3500000,
+            "category": "Street",
+            "engineCapacity": 1000
+          },
+          {
+            "_id": "632884752800190ec6dd325b",
+            "model": "Kawasaki Ninja",
+            "year": 2010,
+            "color": "red",
+            "status": true,
+            "buyValue": 2500000,
+            "category": "Street",
+            "engineCapacity": 1000
+          }
+        ]
+      },
+      "Motorcycle":{
+        "value": {
+          "_id": "632884752800190ec6dd325a",
+          "model": "Kawasaki Ninja",
+          "year": 1963,
+          "color": "red",
+          "status": true,
+          "buyValue": 3500000,
+          "category": "Street",
+          "engineCapacity": 1000
+        }
       }
     }
   }

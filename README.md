@@ -23,7 +23,7 @@ Construção de uma API RESTful aplicando o padrão de arquitetura de software M
 ## Documentação Completa da API
 Ao subir a aplicação acesse a documentação através da seguinte rota:
 
-[http://localhost:3001/api-docs](http://localhost:3001/api-docs)
+[http://localhost:3001/doc](http://localhost:3001/doc)
 
 ## Rodando aplicação
 <details> 
@@ -84,13 +84,28 @@ Inicie o servidor dentro do container
   Crie o contêiner do MongoDB:
   
    ```bash
-    docker run --name <nome-do-container> -p 27017:27017 -d mongo
+    docker run --name car-shop -p 27017:27017 -d mongo
    ```
    
   Confira se o contêiner está rodando:
   
    ```bash
     docker container ls
+   ```
+  Clone o projeto
+
+   ```bash
+    git clone git@github.com:saulomagalhaes/Car-Shop.git
+   ```
+  Entre no diretório do projeto
+
+   ```bash
+    cd Car-Shop
+   ```  
+  Instale as dependências
+
+   ```bash
+    npm install
    ```
   Execute o servidor localmente:
     

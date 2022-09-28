@@ -92,6 +92,21 @@ Inicie o servidor dentro do container
    ```bash
     docker container ls
    ```
+  Clone o projeto
+
+   ```bash
+    git clone git@github.com:saulomagalhaes/Car-Shop.git
+   ```
+  Entre no diretório do projeto
+
+   ```bash
+    cd Car-Shop
+   ```  
+  Instale as dependências
+
+   ```bash
+    npm install
+   ```
   Execute o servidor localmente:
     
    ```bash

@@ -84,7 +84,7 @@ Inicie o servidor dentro do container
   Crie o contêiner do MongoDB:
   
    ```bash
-    docker run --name <nome-do-container> -p 27017:27017 -d mongo
+    docker run --name car-shop -p 27017:27017 -d mongo
    ```
    
   Confira se o contêiner está rodando:

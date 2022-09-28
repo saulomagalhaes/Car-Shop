@@ -122,5 +122,8 @@ Para rodar os testes, execute o seguinte comando:
 ```bash
   npm run test:dev
 ```
+## Screenshots
+
+![Swagger](https://i.pinimg.com/originals/11/bf/82/11bf823172eb1a3eadfaf67a9b5f271d.jpg)
 
 

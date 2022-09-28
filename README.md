@@ -23,7 +23,7 @@ Construção de uma API RESTful aplicando o padrão de arquitetura de software M
 ## Documentação Completa da API
 Ao subir a aplicação acesse a documentação através da seguinte rota:
 
-[http://localhost:3001/api-docs](http://localhost:3001/api-docs)
+[http://localhost:3001/doc](http://localhost:3001/doc)
 
 ## Rodando aplicação
 <details> 
